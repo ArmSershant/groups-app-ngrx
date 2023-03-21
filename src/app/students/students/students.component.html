@@ -1,0 +1,14 @@
+<div class="flex flex-row gap-2 mx-auto">
+  <div *ngFor="let student of students$ | async">
+    <div class="shadow-sm bg-blue-500 rounded mt-1 ml-1 px-3 py-3 mx-auto">
+      <h2>Name: {{ student.name }}</h2>
+      <h2>Surname: {{ student.surname }}</h2>
+      <button
+      class="bg-red-600 text-white active:bg-pink-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 mx-1 my-1"
+      (click)="onDelete(student)"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

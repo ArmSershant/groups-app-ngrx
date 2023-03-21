@@ -1,0 +1,26 @@
+<div class="flex flex-row gap-2 mx-auto">
+  <div *ngFor="let group of groups$ | async">
+    <div class="shadow-sm bg-slate-500 rounded mt-1 ml-1 px-3 py-3 mx-auto">
+      <h2>Group Name: {{ group.title }}</h2>
+      <h2>Count of Students: {{ group.countOfStudents }}</h2>
+      <p>{{ group.countOfStudents  - group.currentCount }} left</p>
+      <button
+        class="bg-red-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 mx-1 my-1"
+        routerLink="/app-students/{{ group.id }}"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Students
+      </button>
+      <button
+        [disabled]="(students$ | async).length >= group.countOfStudents"
+        class="bg-red-600 text-white active:bg-pink-600 font-bold uppercase text-xs px-2 py-1 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 mx-1 my-1"
+        routerLink="/app-addstudent/{{ group.id }}"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Add Student
+      </button>
+    </div>
+  </div>
+</div>

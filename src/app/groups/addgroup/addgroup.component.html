@@ -1,0 +1,68 @@
+<div class="mt-36">
+  <form
+    class="flex flex-col bg-white shadow-md rounded px-6 w-1/5 h-auto mx-auto pt-4 pb-4 gap-2"
+    #f="ngForm"
+    (ngSubmit)="onSubmit(f)"
+    >
+    <label class="block text-center text-gray-700 text-sm font-bold mb-2"
+      >Add Group</label
+    >
+    <input
+      class="w-1/2 bg-pink-300 placeholder-white text-white rounded border-0 mx-auto"
+      type="text"
+      name="title"
+      id="title"
+      #title="ngModel"
+      ngModel
+      required
+      minlength="2"
+      placeholder="Group Name"
+      autofocus
+    />
+    <div
+      *ngIf="title.invalid && (title.dirty || title.touched)"
+      class="bg-red-700 rounded mx-auto text-white"
+    >
+      <div
+        *ngIf="title.errors?.['required']"
+        class="bg-red-700 rounded mx-auto text-white"
+      >
+        Name is required
+      </div>
+      <div
+        *ngIf="title.errors?.['minlength']"
+        class="bg-red-700 rounded mx-auto text-white"
+      >
+        Name must be at least 2 characters long
+      </div>
+    </div>
+    <input
+      class="w-1/2 bg-pink-300 placeholder-white text-white rounded border-0 mx-auto"
+      type="number"
+      name="countOfStudents"
+      id="countOfStudents"
+      ngModel
+      required
+      #count="ngModel"
+      minlength="1"
+      placeholder="Count of Students"
+    />
+    <div
+      *ngIf="count.invalid && (count.dirty || count.touched)"
+      class="bg-red-700 rounded mx-auto text-white"
+    >
+      <div
+        *ngIf="count.errors?.['required']"
+        class="bg-red-700 rounded mx-auto text-white"
+      >
+        Count is required
+      </div>
+    </div>
+    <button
+      class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 mx-auto"
+      type="submit"
+    >
+      Add
+    </button>
+  </form>
+</div>
